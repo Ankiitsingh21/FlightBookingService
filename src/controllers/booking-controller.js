@@ -13,7 +13,9 @@ const create = async (req,res) => {
                 });       
          } 
          catch (error) {
-                return res.status(error.statusCode).json({
+                //console.log("Error status code:", error.statusCode);
+                const statusCode = error.statusCode || 500;
+                return res.status(statusCode).json({
                         message:error.message,
                         success: false,
                         err:error.explanation,
